@@ -1,10 +1,11 @@
 
 from django.urls import path
-from django.conf.urls import include,url
 from . import views
-
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    url(r'^CustomerOrder/$', views.CustomerOrder, name='CustomerOrder'),
-    url(r'^InventoryStatus/$', views.Inventory, name='InventoryStatus'),
-]
+    path('insert/',views.insert, name='insert'),
+    path('CustomerOrder/',views.customer, name='CustomerOrder'),
+    path('InventoryStatus/', views.storage, name='InventoryStatus'),
+    path('Home/',views.index, name='Home'),
+    path('',views.index, name='index'),
+    path('submit/',views.submit, name='submit'),
+    ]

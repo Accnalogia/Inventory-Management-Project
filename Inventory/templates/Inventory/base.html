@@ -1,0 +1,32 @@
+ <html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Bhagyesh Kurlekar">
+  <title> Inventory Management Platform | Welcome</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Inventory</span> Management Platform</h1>
+        </div>
+        <nav>
+          <ul>
+            <li class="current"><a href="/Home">Home</a></li>
+            <li><a href="/CustomerOrder">Customer Order</a></li>
+            <li><a href="/InventoryStatus">Inventory Status</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    {% block content %}
+
+    {% endblock %}
+    <footer>
+      <p>Inventory Management Platform, Copyright &copy; 2019</p>
+    </footer>
+  </body>
+</html>

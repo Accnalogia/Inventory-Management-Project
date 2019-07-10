@@ -29,18 +29,18 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-TEMPLATE_DIRS = (
+TEMPLATE_DIRS = [(
                     os.path.join(os.path.dirname(__file__),'templates'),
-)
+)]
 
 INSTALLED_APPS = [
-    'Inventory',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Inventory.apps.InventoryConfig',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'Inventory_Management.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

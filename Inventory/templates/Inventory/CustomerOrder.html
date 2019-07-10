@@ -1,66 +1,33 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="author" content="Bhagyesh Kurlekar">
-    <title> Inventory Management Platform | Costomer Order</title>
-    <link rel="stylesheet" href="static/css/style.css">
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <div id="branding">
-          <h1><span class="highlight">Inventory</span> Management Platform</h1>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="current"><a href="CustomerOrder.html">Customer Order</a></li>
-            <li><a href="Inventory.html">Inventory Status</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <section id="main">
-      <div class="container">
-        <article id="main-col">
-          <h1 class="page-title">Customer Order</h1>
-          <div class="dark">
-            <form class="quote">
-              <div>
-                <label>Order</label><br>
-                <input type="text" placeholder="Order No.">
-              </div>
-              <div>
-                <label>Created</label><br>
-                <input type="text" placeholder="Created on.">
-              </div>
-              <div>
-                <label>Customer Name</label><br>
-                <input type="text" placeholder="Name">
-              </div>
-              <div>
-                <label>Reference Order</label><br>
-                <input type="text" placeholder="Reference Order No.">
-              </div>
-              <div>
-                <label>Products</label><br>
-                <input type="text" placeholder="Product Name">
-              </div>
-              <button class="button_1" type="submit">Insert</button>
-              <button class="button_1" type="submit">Delete</button>
-            </form>
+{% extends 'Inventory/base.html' %}
+
+{% block content%}
+<section id="main">
+  <div class="container">
+    <article id="main-col">
+      <h1 class="page-title">Customer Order</h1>
+      <div class="dark">
+        <form class="quote" method="post" action="/insert/">
+          {% csrf_token %}
+          <div>
+            <label>Created</label><br>
+            <input name="Create_val" id="date" type="text" placeholder="MM/DD/YYYY" >
           </div>
-
-        </article>
-
+          <div>
+            <label>Customer Name</label><br>
+            <input name="Customer_Name" type="text" placeholder="Name" >
+          </div>
+          <div>
+            <label>Reference Order</label><br>
+            <input name="Reference_Order" type="text" placeholder="Reference Order No.">
+          </div>
+          <div>
+            <label>Products</label><br>
+            <input Name="Products" type="text" placeholder="Product Name" >
+          </div>
+          <button name="insert" class="button_1" type="submit" value="OK">Insert</button>
+        </form>
       </div>
-    </section>
-
-    <footer>
-      <p>Inventory Management Platform, Copyright &copy; 2019</p>
-
-    </footer>
-  </body>
-</html>
+    </article>
+  </div>
+</section>
+{% endblock %}

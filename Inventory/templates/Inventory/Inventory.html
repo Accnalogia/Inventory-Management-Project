@@ -1,95 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="author" content="Bhagyesh Kurlekar">
-    <title> Inventory Management Platform | Inventory Status</title>
-    <link rel="stylesheet" href="static/css/style.css">
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <div id="branding">
-          <h1><span class="highlight">Inventory</span> Management Platform</h1>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="CustomerOrder.html">Customer Order</a></li>
-            <li class="current"><a href="Inventory.html">Inventory Status</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <section id="main">
-      <div class="container">
-        <article id="mail-col">
-          <h1 class="page-title">Inventory Table</h1>
-          <table class="content-table">
-            <thead>
-              <tr>
-                <th>Order</th>
-                <th>Created</th>
-                <th>Customer Name</th>
-                <th>Reference Order</th>
-                <th>Products</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>6/7/2019</td>
-                <td>Bhagyesh</td>
-                <td>jq3357d</td>
-                <td>Samsung J7</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>6/7/2019</td>
-                <td>Jack</td>
-                <td>jq3363d</td>
-                <td>Ipnone 8</td>
-              </tr>
-              <tr class="active-row">
-                <td>3</td>
-                <td>6/7/2019</td>
-                <td>Prashant</td>
-                <td>jq3353k</td>
-                <td>Samsung J9</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>6/7/2019</td>
-                <td>Kurlekar</td>
-                <td>jq3359a</td>
-                <td>Iphone X</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>6/7/2019</td>
-                <td>Random</td>
-                <td>jq3355d</td>
-                <td>Iphone XR</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-      </div>
-    </section>
-    <section id="newsletter">
-      <div class="container">
-        <h1>Start Now</h1>
-        <form>
-          <input type="email" placeholder="Enter Email...">
-          <button type="submit" class="button_1">Subscribe</button>
-        </form>
-      </div>
-    </section>
+{% extends 'Inventory/base.html'%}
 
-    <footer>
-      <p>Inventory Management Platform, Copyright &copy; 2019</p>
+{% block content%}
+<section id="main">
+  <div class="container">
+    <article id="mail-col">
+      <h1 class="page-title">Inventory Table</h1>
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Created</th>
+            <th>Customer Name</th>
+            <th>Reference Order</th>
+            <th>Products</th>
+          </tr>
+        </thead>
+        <tbody>
 
-    </footer>
-  </body>
-</html>
+          {% for s in storage%}
+          <tr>
+            <td>{{s.id}}</td>
+            <td>{{s.created}}</td>
+            <td>{{s.customer_name}}</td>
+            <td>{{s.reference_order}}</td>
+            <td>{{s.products}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </article>
+  </div>
+</section>
+<section id="newsletter">
+  <div class="container">
+    <h1>Subscribe for newsletters</h1>
+    <form method="post" action="/submit/">
+      {% csrf_token %}
+      <input name="email" type="email" placeholder="Enter Email...">
+      <button type="submit" class="button_1">Subscribe</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
